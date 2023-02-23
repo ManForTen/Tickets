@@ -14,16 +14,34 @@ import org.springframework.web.servlet.ModelAndView; // Метод позвол�
 @Controller
 public class AppController {
 
-    @Autowired
-    private TicketsService service;
+    private final TicketsService service;
+
+    private final FlightsService service2;
+
+    public AppController(TicketsService service, FlightsService service2) {
+        this.service = service;
+        this.service2 = service2;
+    }
 
     @RequestMapping("/") // "/" - означает, что будет открываться главная страница
-    public String viewHomePage(Model model, @Param("keyword") String keyword){
+    public String viewHomePage(Model model, @Param("keyword") String keyword, @Param("keyword2") String keyword2){
         List<Tickets> listTickets = service.listAll(keyword);
         model.addAttribute("listTickets", listTickets);
         model.addAttribute("keyword", keyword);
+        List<Flights> listFlights = service2.listAll(keyword2);
+        model.addAttribute("listFlights", listFlights);
+        model.addAttribute("keyword2", keyword2);
         return "index"; // Возвращение html страницы
     }
+
+    @RequestMapping("/user") // "/" - означает, что будет открываться главная страница
+    public String viewUserPage(Model model, @Param("keyword2") String keyword2){
+        List<Flights> listFlights = service2.listAll(keyword2);
+        model.addAttribute("listFlights", listFlights);
+        model.addAttribute("keyword2", keyword2);
+        return "user"; // Возвращение html страницы
+    }
+
 
     @RequestMapping("/new") // Контроллер по добавлению билета
     public String showNewTicketsForm(Model model){

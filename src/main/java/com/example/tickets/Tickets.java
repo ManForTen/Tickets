@@ -1,21 +1,22 @@
 package com.example.tickets;
 
-import jakarta.persistence.Entity; // аннотация entity для указания на то, что класс является сущностью и относится к ORM JPA
-import jakarta.persistence.GeneratedValue; // аннотация для работы сo столбцами в SQL
-import jakarta.persistence.GenerationType; // класс, который отвечает за типы данных перечисления (метод identity)
-import jakarta.persistence.Id; // для первичного ключа объекта
+import jakarta.persistence.*;
 
 @Entity
 public class Tickets {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id; //ID
-    private String first_name; // Имя пассажира
-    private String last_name; // Фамилия пассажира
-    private String booking_date; // Дата и время бронирования
-    private String departure_date; // Дата и время вылета
-    private String board_date; // Дата и время приземления
-    private String place_fr; // Откуда
-    private String place_to; // Куда
-    private String seat; // Посадочное место
+    private String ticket_number; // Имя пассажира
+    private String ticket_class; // Фамилия пассажира
+    private String first_name; // Дата и время бронирования
+    private String last_name; // Дата и время вылета
+    private String departure_datetime_f; // Дата и время приземления
+    private String arrival_datetime_f; // Откуда
+    private Long price; // Куда
+    @ManyToOne
+    private Flights flights_id; //
+    private String seat; // Откуда
 
     protected Tickets(){
     }
@@ -28,6 +29,22 @@ public class Tickets {
         this.id = id;
     }
 
+
+    public String getTicket_number(){
+        return ticket_number;
+    }
+
+    public void setTicket_number(String ticket_number){
+        this.ticket_number = ticket_number;
+    }
+
+    public String getTicket_class(){
+        return ticket_class;
+    }
+
+    public void setTicket_class(String ticket_class){
+        this.ticket_class = ticket_class;
+    }
     public String getFirst_name(){
         return first_name;
     }
@@ -44,44 +61,28 @@ public class Tickets {
         this.last_name = last_name;
     }
 
-    public String getBooking_date(){
-        return booking_date;
+    public String getDeparture_datetime_f(){
+        return departure_datetime_f;
     }
 
-    public void setBooking_date(String booking_date){
-        this.booking_date = booking_date;
+    public void setDeparture_datetime_f(String departure_datetime_f){
+        this.departure_datetime_f = departure_datetime_f;
     }
 
-    public String getDeparture_date(){
-        return departure_date;
+    public String getArrival_datetime_f(){
+        return arrival_datetime_f;
     }
 
-    public void setDeparture_date(String departure_date){
-        this.departure_date = departure_date;
+    public void setArrival_datetime_f(String arrival_datetime_f){
+        this.arrival_datetime_f = arrival_datetime_f;
     }
 
-    public String getBoard_date(){
-        return board_date;
+    public Long getPrice(){
+        return price;
     }
 
-    public void setBoard_date(String board_date){
-        this.board_date = board_date;
-    }
-
-    public String getPlace_fr(){
-        return place_fr;
-    }
-
-    public void setPlace_fr(String place_fr){
-        this.place_fr = place_fr;
-    }
-
-    public String getPlace_to(){
-        return place_to;
-    }
-
-    public void setPlace_to(String place_to){
-        this.place_to = place_to;
+    public void setPrice(Long price){
+        this.price = price;
     }
 
     public String getSeat(){
@@ -92,8 +93,9 @@ public class Tickets {
         this.seat = seat;
     }
 
+
     @Override
     public String toString() {
-        return "tickets [id=" + id + ", first_name=" + first_name +", last_name=" + last_name + ", booking_date=" + booking_date + ", departure_date=" + departure_date + ", board_date=" + board_date + ", place_fr=" + place_fr + ", place_to=" + place_to + ", seat=" + seat +"]";
+        return "tickets [id=" + id + ", ticket_number=" + ticket_number +", ticket_class=" + ticket_class + ", first_name=" + first_name + ", last_name=" + last_name + ", departure_datetime_f=" + departure_datetime_f + ", arrival_datetime_f=" + arrival_datetime_f + ", price=" + price + ", flights_id=" + flights_id + ", seat=" + seat +"]";
     }
 }

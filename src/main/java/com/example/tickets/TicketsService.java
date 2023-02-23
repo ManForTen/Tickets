@@ -8,8 +8,11 @@ import java.util.List;
 @Service
 public class TicketsService {
 
-    @Autowired
-    private TicketsRepository repo;
+    private final TicketsRepository repo;
+
+    public TicketsService(TicketsRepository repo) {
+        this.repo = repo;
+    }
 
     public List<Tickets> listAll(String keyword){ //Коллекция и метод отвечающая за поиск и фильтр в нашей системе
         if (keyword != null){ // Если ключевое слово = null, то вызываем метод из первого return (вывод всех значений)
