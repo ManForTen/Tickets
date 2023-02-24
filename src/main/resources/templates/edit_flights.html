@@ -12,54 +12,43 @@
     <blockquote class="blockquote text-center"><h1>Редактирование авиабилета</h1></blockquote>
     <div class="row">
         <div class="col-md-8 offset-md-4">
-            <form action="#" th:action="@{/save}" th:object="${tickets}" method="post">
+            <form action="#" th:action="@{/save2}" th:object="${flights}" method="post">
                 <table>
                     <tr>
                         <td>ID авиабилета:</td>
-                        <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+                        <td><input type="text" th:field="*{id}"></td>
                     </tr>
                     <tr>
-                        <td>Номер авиабилета:</td>
-                        <td><input type="text" th:field="*{ticket_number}"></td>
-                    </tr>
-                    <tr>
-                        <td>Класс билета:</td>
-                        <td>
-                            <input type="text" th:field="*{ticket_class}" list="test">
-                            <datalist id="test">
-                                <option value="Бизнес">Бизнес</option>
-                                <option value="Эконом">Эконом</option>
-                            </datalist>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Имя пассажира:</td>
-                        <td><input type="text" th:field="*{first_name}"></td>
-
-                    </tr>
-                    <tr>
-                        <td>Фамилия пассажира:</td>
-                        <td><input type="text" th:field="*{last_name}"></td>
+                        <td>Модель самолета:</td>
+                        <td><input type="text" th:field="*{aircraft_model}"></td>
                     </tr>
                     <tr>
                         <td>Дата и время вылета:</td>
-                        <td><input type="datetime-local" th:field="*{departure_datetime_f}"></td>
+                        <td><input type="datetime-local" th:field="*{departure_datetime}"></td>
                     </tr>
                     <tr>
                         <td>Дата и время прибытия:</td>
-                        <td><input type="datetime-local" th:field="*{arrival_datetime_f}"></td>
+                        <td><input type="datetime-local" th:field="*{arrival_datetime}"></td>
                     </tr>
                     <tr>
-                        <td>Цена:</td>
+                        <td>Количество свободных места на борту самолета:</td>
+                        <td><input type="number" th:field="*{count_free_seats}"></td>
+                    </tr>
+                    <tr>
+                        <td>Откуда совершается вылет:</td>
+                        <td><input type="text" th:field="*{place_fr}"></td>
+                    </tr>
+                    <tr>
+                        <td>Куда совершается приземление:</td>
+                        <td><input type="text" th:field="*{place_to}"></td>
+                    </tr>
+                    <tr>
+                        <td>Цена билета класса эконом:</td>
                         <td><input type="text" th:field="*{price}"></td>
                     </tr>
                     <tr>
-                        <td>Посадочное место:</td>
-                        <td><input type="text" th:field="*{seat}"></td>
-                    </tr>
-                    <tr>
-                        <td>ID Рейса:</td>
-                        <td><input type="text" th:field="*{flights_id}" readonly="readonly"></td>
+                        <td>Цена билета класса бизнес:</td>
+                        <td><input type="text" th:field="*{price_b}"></td>
                     </tr>
                     <tr>
                         <td>

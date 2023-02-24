@@ -14,8 +14,7 @@ public class Tickets {
     private String departure_datetime_f; // Дата и время приземления
     private String arrival_datetime_f; // Откуда
     private Long price; // Куда
-    @ManyToOne
-    private Flights flights_id; //
+    private Long flights_id; //
     private String seat; // Откуда
 
     protected Tickets(){
@@ -84,6 +83,13 @@ public class Tickets {
     public void setPrice(Long price){
         this.price = price;
     }
+    public Long getFlights_id(){
+        return flights_id;
+    }
+
+    public void setFlights_id(Long flights_id){
+        this.flights_id = flights_id;
+    }
 
     public String getSeat(){
         return seat;
@@ -92,6 +98,7 @@ public class Tickets {
     public void setSeat(String seat){
         this.seat = seat;
     }
+
 
 
     @Override

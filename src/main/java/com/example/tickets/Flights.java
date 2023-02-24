@@ -17,6 +17,7 @@ public class Flights {
     private String place_fr; // Откуда
     private String place_to; // Куда
     private String price; //
+    private String price_b;
 
 
     protected Flights(){
@@ -82,6 +83,13 @@ public class Flights {
 
     public void setPrice(String price){
         this.price = price;
+    }
+    public String getPrice_b(){
+        return price_b;
+    }
+
+    public void setPrice_b(String price_b){
+        this.price_b = price_b;
     }
 
 
