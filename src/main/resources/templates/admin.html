@@ -10,7 +10,11 @@
 <div class="bg-image"
      style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg'); height: 100vh; overflow: auto">
   <blockquote class="blockquote text-center"><h1>Бронирование авиабилетов</h1></blockquote>
-  <h4><a href="/">Вернуться на главную страницу</a></h4>
+  <a href="/">
+    <button type="button" class="btn btn-light" data-togge="button" aria-pressed="false" autocomplete="off">
+      Вернуться на главную страницу
+    </button>
+  </a>
   <div class="row">
     <div class="col-md-8 offset-md-4">
       <h4>Поиск авиабилета по любому критерию:</h4>
@@ -25,7 +29,7 @@
   <table id="2" class="table table-striped table-hover">
     <thead>
     <tr>
-      <th scope="col">ID билета</th>
+      <th scope="col">ID рейса</th>
       <th scope="col">Модель самолета</th>
       <th scope="col">Дата и время вылета</th>
       <th scope="col">Дата и время прибытия</th>
@@ -38,7 +42,7 @@
     </thead>
     <tbody>
     <tr th:each="flights: ${listFlights}">
-      <th scope="row" class="text-white" th:text="${flights.id}">ID билета отсутствует</th>
+      <th scope="row" class="text-white" th:text="${flights.id}">ID рейса отсутствует</th>
       <th scope="row" class="text-white" th:text="${flights.aircraft_model}">Модель самолета отсутствует</th>
       <th scope="row" class="text-white" th:text="${flights.departure_datetime}">Дата и время вылета отсутствует</th>
       <th scope="row" class="text-white" th:text="${flights.arrival_datetime}">Дата и время прибытия отсутствует</th>
@@ -66,10 +70,10 @@
   <p class="text-white">
     <script type="text/javascript">
       function getRowsColumn() {
-        let table = document.getElementById('1')
+        let table = document.getElementById('2')
         let tBody = table.querySelector('tbody')
         const count = tBody.querySelectorAll('tr').length;
-        document.write('Количество билетов в таблице: ' + count)
+        document.write('Количество рейсов в таблице: ' + count)
       }
       getRowsColumn()
     </script>

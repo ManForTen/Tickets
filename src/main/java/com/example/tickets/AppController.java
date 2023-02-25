@@ -55,7 +55,7 @@ public class AppController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String saveTickets(@ModelAttribute("tickets") Tickets tickets){
         service.save(tickets);
-        return "redirect:/"; // Сохранение и перенос на главную страницу
+        return "redirect:/user"; // Сохранение и перенос на главную страницу
     }
 
     @RequestMapping("/edit/{id}")
@@ -69,7 +69,7 @@ public class AppController {
     @RequestMapping("/delete/{id}")
     public String deleteTickets(@PathVariable(name = "id") Long id){
         service.delete(id);
-        return "redirect:/"; // Сохранение и перенос на главную страницу
+        return "redirect:/user"; // Сохранение и перенос на главную страницу
     }
 
     @RequestMapping("/admin") // "/" - означает, что будет открываться главная страница
@@ -91,7 +91,7 @@ public class AppController {
     @RequestMapping(value = "/save2", method = RequestMethod.POST)
     public String saveFlights(@ModelAttribute("flights") Flights flights){
         service2.save(flights);
-        return "redirect:/"; // Сохранение и перенос на главную страницу
+        return "redirect:/admin"; // Сохранение и перенос на главную страницу
     }
 
     @RequestMapping("/edit2/{id}")
@@ -105,7 +105,7 @@ public class AppController {
     @RequestMapping("/delete2/{id}")
     public String deleteFlights(@PathVariable(name = "id") Long id){
         service2.delete(id);
-        return "redirect:/"; // Сохранение и перенос на главную страницу
+        return "redirect:/admin"; // Сохранение и перенос на главную страницу
     }
 
     @RequestMapping("/histogram") // Контроллер по открытию гистограммы
