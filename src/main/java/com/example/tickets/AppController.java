@@ -115,6 +115,9 @@ public class AppController {
         return "histogram"; // Возвращение html страницы
     }
 
-
+    @RequestMapping("/author")
+    public String showAuthorForm(){
+        return "author"; // Возвращение html страницы
+    }
 
 }

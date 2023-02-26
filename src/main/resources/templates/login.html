@@ -1,19 +1,87 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
-  <title>Spring Security Example </title>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
 </head>
+<style type="text/css">
+  #bg {
+    background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg');
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(5px);
+  }
+
+  html {
+    display: table;
+    margin: auto;
+  }
+
+  body {
+    margin: 240px;
+  }
+  form {
+    width: 350px;
+    position: relative;
+  }
+
+  #input1 {
+    width: 300px;
+    outline: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: none;
+    padding: 0.9rem 0.7rem;
+    font-size: 17px;
+  }
+  #input2 {
+    width: 300px;
+    outline: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: none;
+    padding: 0.9rem 0.7rem;
+    font-size: 17px;
+  }
+  #input3 {
+    width: 324px;
+    outline: none;
+    background-color: #fff;
+    border-radius: 4px;
+    border: none;
+    padding: 0.9rem 0.7rem;
+    font-size: 17px;
+  }
+</style>
 <body>
-<div th:if="${param.error}">
-  Invalid username and password.
-</div>
-<div th:if="${param.logout}">
-  You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-  <div><label> User Name : <input type="text" name="username"/> </label></div>
-  <div><label> Password: <input type="password" name="password"/> </label></div>
-  <div><input type="submit" value="Sign In"/></div>
-</form>
+<div id="bg"></div>
+
+
+
+  <form th:action="@{/login}" method="post">
+
+    <div th:if="${param.error}">
+      <big>Неверный логин или пароль!</big>
+    </div>
+
+    <div th:if="${param.logout}">
+      <big>Вы вышли из своего аккаунта!</big>
+    </div>
+    <div>
+      <label> <big>Логин :</big> <input type="text" id="input1" placeholder="Email / Имя пользователя" name="username"/> </label>
+    </div>
+
+    <div>
+      <label> <big>Пароль:</big> <input type="password" id="input2" placeholder="Пароль" name="password"/> </label>
+    </div>
+
+    <div>
+      <input type="submit" id="input3" value="Войти"/>
+    </div>
+  </form>
 </body>
 </html>
