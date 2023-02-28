@@ -1,15 +1,19 @@
 package com.example.tickets;
 
 import java.util.List;
+
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller; // Позволяет указать адрес страницы
 import org.springframework.ui.Model; // Интерфейс, который необходим для взаимодействия Controller и конфигуратора modelviewcontroller, а также для добавления всех элементов web интерфейса
-import org.springframework.web.bind.annotation.ModelAttribute; // Аннотация для связывания параметра и метода, который будет выводиться в web интерфейсе
-import org.springframework.web.bind.annotation.PathVariable; // Аннотация необходимая для получения параметра из адресной строки браузера
-import org.springframework.web.bind.annotation.RequestMapping; // Аннотация для создания адреса браузерной строки(URL) для создания адреса контроллера
-import org.springframework.web.bind.annotation.RequestMethod; // Метод указывающий с помощью какого http запроса будем передавать данные (POST,GET)
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView; // Метод позволяющий указать название html страниц, которые мы подвязываем к нашему модулю
+
+import javax.naming.AuthenticationException;
 
 @Controller
 public class AppController {
@@ -17,6 +21,8 @@ public class AppController {
     private final TicketsService service;
 
     private final FlightsService service2;
+    private StripeService paymentsService;
+
 
     public AppController(TicketsService service, FlightsService service2) {
         this.service = service;
@@ -31,6 +37,9 @@ public class AppController {
         List<Flights> listFlights = service2.listAll(keyword2);
         model.addAttribute("listFlights", listFlights);
         model.addAttribute("keyword2", keyword2);
+        model.addAttribute("amount", 50 * 100); // in cents
+        model.addAttribute("stripePublicKey", "pk_test_51MfYMZLhnuHRDUyTUSOn9l7Nm6RQIv57J8nf5hgC5sORtCvEMA2iIhUXsBoIku42lcPwFHkVnwU8iI1QItI9gDzS00TETXEk8C");
+        model.addAttribute("currency", "EUR");
         return "index"; // Возвращение html страницы
     }
 
@@ -114,10 +123,17 @@ public class AppController {
         model.addAttribute("tickets", tickets); // Первый параметр название database
         return "histogram"; // Возвращение html страницы
     }
-
     @RequestMapping("/author")
     public String showAuthorForm(){
         return "author"; // Возвращение html страницы
     }
+
+    @RequestMapping("/result2")
+    public String showResult2Form(){
+        return "result2"; // Возвращение html страницы
+    }
+
+
+
 
 }
