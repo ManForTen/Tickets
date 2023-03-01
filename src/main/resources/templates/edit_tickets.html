@@ -34,28 +34,28 @@
                     </tr>
                     <tr>
                         <td>Имя пассажира:</td>
-                        <td><input type="text" th:field="*{first_name}"></td>
+                        <td><input type="text" th:field="*{first_name}" required></td>
 
                     </tr>
                     <tr>
                         <td>Фамилия пассажира:</td>
-                        <td><input type="text" th:field="*{last_name}"></td>
+                        <td><input type="text" th:field="*{last_name}" required></td>
                     </tr>
                     <tr>
                         <td>Дата и время вылета:</td>
-                        <td><input type="datetime-local" th:field="*{departure_datetime_f}"></td>
+                        <td><input type="datetime-local" th:field="*{departure_datetime_f}" required></td>
                     </tr>
                     <tr>
                         <td>Дата и время прибытия:</td>
-                        <td><input type="datetime-local" th:field="*{arrival_datetime_f}"></td>
+                        <td><input type="datetime-local" th:field="*{arrival_datetime_f}" required></td>
                     </tr>
                     <tr>
                         <td>Цена:</td>
-                        <td><input type="text" th:field="*{price}"></td>
+                        <td><input type="text" th:field="*{price}" required></td>
                     </tr>
                     <tr>
                         <td>Посадочное место:</td>
-                        <td><input type="text" th:field="*{seat}"></td>
+                        <td><input type="text" th:field="*{seat}" required></td>
                     </tr>
                     <tr>
                         <td>ID Рейса:</td>

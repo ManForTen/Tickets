@@ -39,7 +39,7 @@
         </div>
     </div>
         <table id="1" class="table table-striped table-hover">
-            <blockquote class="blockquote text-center"><h4>Авиабилеты:</h4></blockquote>
+            <blockquote class="blockquote text-center"><h4>Рейсы:</h4></blockquote>
             <thead>
             <tr>
                 <th scope="col">ID рейса</th>
@@ -72,7 +72,7 @@
         </script>
     </table>
     <table id="2" class="table table-striped table-hover">
-        <blockquote class="blockquote text-center"><h4>Рейсы:</h4></blockquote>
+        <blockquote class="blockquote text-center"><h4>Авиабилеты:</h4></blockquote>
         <thead>
         <tr>
             <th scope="col">ID билета</th>
@@ -100,22 +100,7 @@
             <th scope="row" class="text-white" th:text="${tickets.seat}">Посадочное место отсутствует</th>
             <th scope="row" class="text-white" th:text="${tickets.flights_id}">ID Рейса отсутствует</th>
             <td>
-                <form action="/charge" method='POST' id='checkout-form'>
-                    <input type='hidden' th:value='${amount}' name='amount' />
-                    <!-- NOTE: data-key/data-amount/data-currency will be rendered by Thymeleaf -->
-                    <script
-                            src='https://checkout.stripe.com/checkout.js'
-                            class='stripe-button'
-                            th:attr='data-key=${stripePublicKey},
-                                data-amount=${amount},
-                                data-currency=${currency}'
-                            data-name='Baeldung'
-                            data-description='Spring course checkout'
-                            data-image='https://www.baeldung.com/wp-content/themes/baeldung/favicon/android-chrome-192x192.png'
-                            data-locale='auto'
-                            data-zip-code='false'>
-                    </script>
-                </form>
+                <a th:href="@{'/edit3/'+${tickets.id}}"><button type="button" class="btn btn-primary">Купить</button></a>
             </td>
         </tr>
         </tbody>
@@ -130,7 +115,7 @@
                 let table = document.getElementById('1')
                 let tBody = table.querySelector('tbody')
                 const count = tBody.querySelectorAll('tr').length;
-                document.write('Количество билетов в таблице: ' + count)
+                document.write('Количество рейсов в таблице: ' + count)
             }
             getRowsColumn()
         </script>
@@ -141,7 +126,7 @@
                 let table = document.getElementById('2')
                 let tBody = table.querySelector('tbody')
                 const count = tBody.querySelectorAll('tr').length;
-                document.write('Количество рейсов в таблице: ' + count)
+                document.write('Количество билетов в таблице: ' + count)
             }
             getRowsColumn()
         </script>

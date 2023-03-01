@@ -15,10 +15,6 @@
             <form action="#" th:action="@{/save2}" th:object="${flights}" method="post">
                 <table>
                     <tr>
-                        <td>ID авиабилета:</td>
-                        <td><input type="text" th:field="*{id}"></td>
-                    </tr>
-                    <tr>
                         <td>Модель самолета:</td>
                         <td><input type="text" th:field="*{aircraft_model}"></td>
                     </tr>

@@ -15,10 +15,6 @@
             <form action="#" th:action="@{/save}" th:object="${tickets}" method="post">
                 <table>
                     <tr>
-                        <td>ID авиабилета:</td>
-                        <td><input type="text" th:field="*{id}"></td>
-                    </tr>
-                    <tr>
                         <td>Номер авиабилета:</td>
                         <td><input type="text" th:field="*{ticket_number}"></td>
                     </tr>
@@ -31,15 +27,6 @@
                                 <option value="Эконом">Эконом</option>
                             </datalist>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Имя пассажира:</td>
-                        <td><input type="text" th:field="*{first_name}"></td>
-
-                    </tr>
-                    <tr>
-                        <td>Фамилия пассажира:</td>
-                        <td><input type="text" th:field="*{last_name}"></td>
                     </tr>
                     <tr>
                         <td>Дата и время вылета:</td>

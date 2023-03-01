@@ -2,10 +2,6 @@ package com.example.tickets;
 
 import java.util.List;
 
-import com.stripe.exception.StripeException;
-import com.stripe.model.Charge;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller; // Позволяет указать адрес страницы
@@ -13,7 +9,6 @@ import org.springframework.ui.Model; // Интерфейс, который не�
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView; // Метод позволяющий указать название html страниц, которые мы подвязываем к нашему модулю
 
-import javax.naming.AuthenticationException;
 
 @Controller
 public class AppController {
@@ -28,6 +23,8 @@ public class AppController {
         this.service = service;
         this.service2 = service2;
     }
+    @Value("${STRIPE_PUBLIC_KEY}")
+    private String stripePublicKey;
 
     @RequestMapping("/") // "/" - означает, что будет открываться главная страница
     public String viewHomePage(Model model, @Param("keyword") String keyword, @Param("keyword2") String keyword2){
@@ -38,8 +35,8 @@ public class AppController {
         model.addAttribute("listFlights", listFlights);
         model.addAttribute("keyword2", keyword2);
         model.addAttribute("amount", 50 * 100); // in cents
-        model.addAttribute("stripePublicKey", "pk_test_51MfYMZLhnuHRDUyTUSOn9l7Nm6RQIv57J8nf5hgC5sORtCvEMA2iIhUXsBoIku42lcPwFHkVnwU8iI1QItI9gDzS00TETXEk8C");
-        model.addAttribute("currency", "EUR");
+        model.addAttribute("stripePublicKey", stripePublicKey);
+        model.addAttribute("currency", "USD");
         return "index"; // Возвращение html страницы
     }
 
@@ -128,10 +125,31 @@ public class AppController {
         return "author"; // Возвращение html страницы
     }
 
-    @RequestMapping("/result2")
-    public String showResult2Form(){
-        return "result2"; // Возвращение html страницы
+    @RequestMapping(value = "/save3/{id}", method = RequestMethod.POST)
+    public String savePayTickets(@ModelAttribute("tickets") Tickets tickets){
+        service.save(tickets);
+        return "redirect:/payment/{id}"; // Сохранение и перенос на главную страницу
     }
+
+    @RequestMapping("/edit3/{id}")
+    public ModelAndView showEditPayTicketsForm(@PathVariable(name = "id") Long id) { // id - параметр из браузерной строки
+        ModelAndView mav = new ModelAndView("edit_pay");
+        Tickets tickets = service.get(id);
+        mav.addObject("tickets", tickets);
+        return mav; // Возвращаем страницу с данными о книге по id
+    }
+    @RequestMapping("/payment/{id}")
+    public ModelAndView showPaymentForm(Model model, @PathVariable(name = "id") Long id){
+        ModelAndView mav = new ModelAndView("payment");
+        Tickets tickets = service.get(id);
+        mav.addObject("tickets", tickets);
+        model.addAttribute("amount", tickets.getPrice()); // in cents
+        model.addAttribute("stripePublicKey", stripePublicKey);
+        model.addAttribute("currency", ChargeRequest.Currency.EUR);
+        return mav; // Возвращаем страницу с данными о книге по id
+    }
+
+
 
 
 
