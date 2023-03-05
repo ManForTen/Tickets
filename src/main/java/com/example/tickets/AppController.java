@@ -16,7 +16,6 @@ public class AppController {
     private final TicketsService service;
 
     private final FlightsService service2;
-    private StripeService paymentsService;
 
 
     public AppController(TicketsService service, FlightsService service2) {
@@ -115,9 +114,10 @@ public class AppController {
     }
 
     @RequestMapping("/histogram") // Контроллер по открытию гистограммы
-    public String showNewHistogramForm(Model model){
-        Tickets tickets = new Tickets();
-        model.addAttribute("tickets", tickets); // Первый параметр название database
+    public String showNewHistogramForm(Model model, @Param("keyword") String keyword2){
+        List<Flights> listFlights = service2.listAll(keyword2);
+        model.addAttribute("listFlights", listFlights);
+        model.addAttribute("keyword2", keyword2);
         return "histogram"; // Возвращение html страницы
     }
     @RequestMapping("/author")
