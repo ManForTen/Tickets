@@ -16,39 +16,39 @@
                 <table>
                     <tr>
                         <td>ID авиабилета:</td>
-                        <td><input type="text" th:field="*{id}"></td>
+                        <td><input type="text" th:field="*{id}" required></td>
                     </tr>
                     <tr>
                         <td>Модель самолета:</td>
-                        <td><input type="text" th:field="*{aircraft_model}"></td>
+                        <td><input type="text" th:field="*{aircraft_model}" required></td>
                     </tr>
                     <tr>
                         <td>Дата и время вылета:</td>
-                        <td><input type="datetime-local" th:field="*{departure_datetime}"></td>
+                        <td><input type="datetime-local" th:field="*{departure_datetime}" required></td>
                     </tr>
                     <tr>
                         <td>Дата и время прибытия:</td>
-                        <td><input type="datetime-local" th:field="*{arrival_datetime}"></td>
+                        <td><input type="datetime-local" th:field="*{arrival_datetime}" required></td>
                     </tr>
                     <tr>
                         <td>Количество свободных места на борту самолета:</td>
-                        <td><input type="number" th:field="*{count_free_seats}"></td>
+                        <td><input type="number" th:field="*{count_free_seats}" required></td>
                     </tr>
                     <tr>
                         <td>Откуда совершается вылет:</td>
-                        <td><input type="text" th:field="*{place_fr}"></td>
+                        <td><input type="text" th:field="*{place_fr}" required></td>
                     </tr>
                     <tr>
                         <td>Куда совершается приземление:</td>
-                        <td><input type="text" th:field="*{place_to}"></td>
+                        <td><input type="text" th:field="*{place_to}" required></td>
                     </tr>
                     <tr>
                         <td>Цена билета класса эконом:</td>
-                        <td><input type="text" th:field="*{price}"></td>
+                        <td><input type="text" th:field="*{price}" required></td>
                     </tr>
                     <tr>
                         <td>Цена билета класса бизнес:</td>
-                        <td><input type="text" th:field="*{price_b}"></td>
+                        <td><input type="text" th:field="*{price_b}" required></td>
                     </tr>
                     <tr>
                         <td>

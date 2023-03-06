@@ -20,12 +20,12 @@
                     </tr>
                     <tr>
                         <td>Номер авиабилета:</td>
-                        <td><input type="text" th:field="*{ticket_number}"></td>
+                        <td><input type="text" th:field="*{ticket_number}" required></td>
                     </tr>
                     <tr>
                         <td>Класс билета:</td>
                         <td>
-                            <input type="text" th:field="*{ticket_class}" list="test">
+                            <input type="text" th:field="*{ticket_class}" list="test" required>
                             <datalist id="test">
                                 <option value="Бизнес">Бизнес</option>
                                 <option value="Эконом">Эконом</option>
