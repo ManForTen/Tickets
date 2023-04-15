@@ -11,12 +11,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.naming.AuthenticationException;
 
+/**
+ * Controller for ticket payment
+ * @author Artem Petrikov
+ */
 @Controller
 public class ChargeController {
 
     @Autowired
     private StripeService paymentsService;
 
+    /**
+     * Controller for displaying information about the completed payment
+     * @param chargeRequest object
+     * @param model required to add attributes
+     * @return the result.html
+     * @throws StripeException handles only Stripe-specific exceptions
+     * @throws AuthenticationException For authentication
+     */
     @PostMapping("/charge")
     public String charge(ChargeRequest chargeRequest, Model model)
             throws StripeException, AuthenticationException {
@@ -30,6 +42,12 @@ public class ChargeController {
         return "result";
     }
 
+    /**
+     * Error handler
+     * @param model required to add attributes
+     * @param ex required to add StripeException
+     * @return result.html with all parameters
+     */
     @ExceptionHandler(StripeException.class)
     public String handleError(Model model, StripeException ex) {
         model.addAttribute("error", ex.getMessage());
