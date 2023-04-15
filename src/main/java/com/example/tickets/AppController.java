@@ -58,7 +58,7 @@ public class AppController {
      * @param model required to add attributes
      * @param keyword this parameter from the TicketsService class is required to implement the search
      * @param keyword2 this parameter from the FlightService class is required to implement the search
-     * @return index.html with all parameters
+     * @return user/.html with all parameters
      */
     @RequestMapping("/user") // "/user" - means that the user page will open
     public String viewUserPage(Model model, @Param("keyword") String keyword, @Param("keyword2") String keyword2){
