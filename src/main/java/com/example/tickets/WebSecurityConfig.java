@@ -1,5 +1,6 @@
 package com.example.tickets;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,19 +12,34 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
-import java.util.Arrays;
-import java.util.List;
 
 
+/**
+ * Class required for authentication in the system
+ * @author Artem Petrikov
+ */
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    @Value("${uslog}") // Login for the user
+    private String uslog;
 
+    @Value("${uspass}") // Password for the user
+    private String uspass;
+
+    @Value("${adlog}") // Login for the admin
+    private String adlog;
+
+    @Value("${adpass}")
+    private String adpass; // Password for the admin
+
+    /**
+     * Security filter, allows access to certain pages by certain roles (Admin/User)
+     * @param http http it is HttpSecurity. HttpSecurity is used to configure authorization rules for HTTP requests.
+     * @return http.build()
+     * @throws Exception if an error occurs while configuring the authorization rules.
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
@@ -45,21 +61,24 @@ public class WebSecurityConfig {
         return http.build();
     }
 
+    /**
+     * This method is necessary to add users to the system
+     * @return InMemoryUserDetailsManager(user,user2)
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails user =
                 User.withDefaultPasswordEncoder()
-                        .username("u")
-                        .password("p")
+                        .username(uslog)
+                        .password(uspass)
                         .roles("USER")
                         .build();
         UserDetails user2 =
                 User.withDefaultPasswordEncoder()
-                        .username("u1")
-                        .password("p1")
+                        .username(adlog)
+                        .password(adpass)
                         .roles("ADMIN")
                         .build();
-
         return new InMemoryUserDetailsManager(user,user2);
     }
 
