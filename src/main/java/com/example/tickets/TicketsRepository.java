@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+/**
+ * The interface that is needed to search for tickets by first name, last name and seat
+ * @author Artem Petrikov
+ */
 @Repository
 public interface TicketsRepository extends JpaRepository<Tickets, Long> {
     @Query("SELECT p FROM Tickets p WHERE CONCAT(p.first_name, ' ', p.last_name, ' ', p.seat) LIKE %?1%")
