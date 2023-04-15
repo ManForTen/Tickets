@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * This class represents a service that performs various operations on data.
- * It includes methods for save, get and deleting data.
+ * It includes methods for search, save, get and deleting data.
  * @author Artem Petrikov
  */
 @Service
