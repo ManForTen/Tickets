@@ -1,6 +1,9 @@
 package com.example.tickets;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity; // Entity annotation to indicate that the class is an entity and belongs to the ORM JPA
+import jakarta.persistence.GeneratedValue; // Annotation for working with columns in SQL
+import jakarta.persistence.GenerationType; // The class that is responsible for the enumeration data types (identity method)
+import jakarta.persistence.Id; // Required for the primary key of the object
 
 /**
  * Class for creating an entity
