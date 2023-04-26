@@ -7,14 +7,20 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-
 <body>
 <div class="bg-image"
-     style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg'); height: 100vh; overflow: auto">
+     style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg'); height:100%;
+     background-repeat: no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
+     object-fit: cover;
+     overflow-y: auto;
+     overflow-x: hidden;">
+
     <blockquote class="blockquote text-center"><h1>Бронирование авиабилетов</h1></blockquote>
 
     <form th:action="@{/logout}" method="post" style='float: right;'>
-        <input type="submit" value="Авторизоваться"/>
+        <input class="btn btn-light" type="submit" value="Авторизоваться"/>
     </form>
     <a href="/user">
         <button type="button" class="btn btn-light" data-togge="button" aria-pressed="false" autocomplete="off">
@@ -144,9 +150,6 @@
             Об авторе
         </button>
     </a>
-
-
-
 </div>
 <script type="text/javascript">
     function clearSearch() {
@@ -155,7 +158,6 @@
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-    // Get all td elements in the target column
     let tr = document.getElementsByClassName('table-tr');
     let submitButton = document.getElementsByClassName("td");
     for (let i = 0; i < tr.length; i++) {
@@ -167,9 +169,6 @@
             submitButton2.style.display = "none";
         }
     }
-
-
-
 </script>
 </body>
 </html>

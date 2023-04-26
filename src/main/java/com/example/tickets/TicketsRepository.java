@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface TicketsRepository extends JpaRepository<Tickets, Long> {
-    @Query("SELECT p FROM Tickets p WHERE CONCAT(p.first_name, ' ', p.last_name, ' ', p.seat) LIKE %?1%")
+    @Query("SELECT p FROM Tickets p WHERE CONCAT(p.ticket_number, ' ', p.ticket_class, ' ', p.first_name, ' ', p.last_name, ' ', p.departure_datetime_f, ' ', p.arrival_datetime_f, ' ', p.price, ' ', p.seat) LIKE %?1%")
     List<Tickets> search(String keyword);
 }

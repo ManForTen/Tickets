@@ -46,7 +46,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/","/edit3/*","/save3/*","/result","/charge","/payment/*").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/admin","/new2","/edit2/*").hasRole("ADMIN")
                         .requestMatchers("/user").access(new WebExpressionAuthorizationManager("hasRole('ADMIN') or hasRole('USER')"))
                         .anyRequest().authenticated()
 
