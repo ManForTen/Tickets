@@ -1,4 +1,4 @@
-package com.example.tickets;
+package com.example.tickets.Config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

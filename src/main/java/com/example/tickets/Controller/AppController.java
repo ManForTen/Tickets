@@ -1,7 +1,12 @@
-package com.example.tickets;
+package com.example.tickets.Controller;
 
 import java.util.List;
 
+import com.example.tickets.Domain.ChargeRequest;
+import com.example.tickets.Domain.Flights;
+import com.example.tickets.Domain.Tickets;
+import com.example.tickets.Service.FlightsService;
+import com.example.tickets.Service.TicketsService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller; // Allows to specify the page address

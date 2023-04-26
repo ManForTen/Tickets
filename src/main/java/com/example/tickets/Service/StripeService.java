@@ -1,5 +1,6 @@
-package com.example.tickets;
+package com.example.tickets.Service;
 
+import com.example.tickets.Domain.ChargeRequest;
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;

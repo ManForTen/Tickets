@@ -1,5 +1,7 @@
-package com.example.tickets;
+package com.example.tickets.Controller;
 
+import com.example.tickets.Domain.ChargeRequest;
+import com.example.tickets.Service.StripeService;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.example.tickets;
+package com.example.tickets.Config;
 
 import org.springframework.context.annotation.Configuration; // Annotation for combining methods into a single springboot application
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry; // Annotation for combining methods into a single springboot application

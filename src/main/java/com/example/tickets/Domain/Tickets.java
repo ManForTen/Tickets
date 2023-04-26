@@ -1,4 +1,4 @@
-package com.example.tickets;
+package com.example.tickets.Domain;
 
 import jakarta.persistence.Entity; // Entity annotation to indicate that the class is an entity and belongs to the ORM JPA
 import jakarta.persistence.GeneratedValue; // Annotation for working with columns in SQL
@@ -27,7 +27,7 @@ public class Tickets {
     /**
      * Default protected constructor
      */
-    protected Tickets(){
+    public Tickets(){
     }
 
     /**

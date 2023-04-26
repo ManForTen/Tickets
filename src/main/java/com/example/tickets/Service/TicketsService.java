@@ -1,5 +1,7 @@
-package com.example.tickets;
+package com.example.tickets.Service;
 
+import com.example.tickets.Domain.Tickets;
+import com.example.tickets.Repository.TicketsRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 

@@ -9,19 +9,29 @@
 
 <body>
 <div class="bg-image"
-     style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg'); height:100%;
-     background-repeat: no-repeat;
-     background-size: cover;
-     background-attachment: fixed;
-     object-fit: cover;
-     overflow-y: auto;
-     overflow-x: hidden;">
+     style="background-image: url('https://catherineasquithgallery.com/uploads/posts/2021-02/1613639313_65-p-fon-dlya-prezentatsii-samolet-73.jpg');
+     height: 100vh; overflow: hidden; overflow-y: auto; background-repeat: no-repeat; background-size: cover;">
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand text-white" href="/">Авиабилеты</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link text-white" href="/author">Страница об авторе</a>
+            </div>
+            <div class="nav navbar-nav mx-auto">
+                <form class="d-flex" th:action="@{/}">
+                    <input class="form-control me-2" type="text" placeholder="Поиск" name="keyword" id="keyword" size="38" th:value="${keyword}"/>
+                    <input type="submit" class="btn btn-outline-light btn-sm me-2" value="Поиск по авиабилетам"/>
+                    <input type="button" class="btn btn-outline-light btn-sm" value="Очистить" id="btnClear" onclick="clearSearch()"/>
+                </form>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link btn btn-light" href="/logout">Авторизоваться</a>
+        </div>
+    </nav>
 
     <blockquote class="blockquote text-center"><h1>Бронирование авиабилетов</h1></blockquote>
 
-    <form th:action="@{/logout}" method="post" style='float: right;'>
-        <input class="btn btn-light" type="submit" value="Авторизоваться"/>
-    </form>
     <a href="/user">
         <button type="button" class="btn btn-light" data-togge="button" aria-pressed="false" autocomplete="off">
             Забронировать авиабилет(сотрудник/админ)
@@ -34,16 +44,6 @@
             Отредактировать рейс(только админ)
         </button>
     </a>
-    <div class="row">
-        <div class="col-md-8 offset-md-4">
-            <h4>Поиск авиабилета по любому критерию:</h4>
-            <form th:action="@{/}">
-                <input type="text" name="keyword" id="keyword" size="38" th:value="${keyword}" required/>
-                <input type="submit" class="btn btn-success btn-sm" value="Поиск"/>
-                <input type="button" class="btn btn-warning btn-sm" value="Очистить" id="btnClear" onclick="clearSearch()"/>
-            </form>
-        </div>
-    </div>
         <table id="1" class="table table-striped table-hover">
             <blockquote class="blockquote text-center"><h4>Рейсы:</h4></blockquote>
             <thead>
