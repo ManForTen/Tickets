@@ -45,7 +45,7 @@ public class WebSecurityConfig {
         http.cors().and().csrf().disable();
         http
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/edit3/*","/save3/*","/result","/charge","/payment/*").permitAll()
+                        .requestMatchers("/","/edit3/*","/save3/*","/result","/charge","/payment/*","/author").permitAll()
                         .requestMatchers("/admin","/new2","/edit2/*").hasRole("ADMIN")
                         .requestMatchers("/user").access(new WebExpressionAuthorizationManager("hasRole('ADMIN') or hasRole('USER')"))
                         .anyRequest().authenticated()
