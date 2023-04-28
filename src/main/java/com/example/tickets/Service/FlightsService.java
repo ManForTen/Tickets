@@ -26,7 +26,7 @@ public class FlightsService {
 
     /**
      * Collection and method responsible for search and filter in the system
-     * @param keyword2 this parameter from the FlightService class is required to implement the search
+     * @param keyword2 this parameter from the FlightRepository class is required to implement the search
      * @return If the keyword = null, then call the method from the first return (output all values), otherwise nothing will be output
      */
     public List<Flights> listAll(String keyword2){

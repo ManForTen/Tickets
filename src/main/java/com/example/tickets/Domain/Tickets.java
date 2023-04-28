@@ -25,7 +25,7 @@ public class Tickets {
     private String seat; // Seat
 
     /**
-     * Default protected constructor
+     * Default constructor
      */
     public Tickets(){
     }

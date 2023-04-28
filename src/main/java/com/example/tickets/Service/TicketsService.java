@@ -26,7 +26,7 @@ public class TicketsService {
 
     /**
      * Collection and method responsible for search and filter in the system
-     * @param keyword this parameter from the TicketsService class is required to implement the search
+     * @param keyword this parameter from the TicketsRepository class is required to implement the search
      * @return If the keyword = null, then call the method from the first return (output all values), otherwise nothing will be output
      */
     public List<Tickets> listAll(String keyword){

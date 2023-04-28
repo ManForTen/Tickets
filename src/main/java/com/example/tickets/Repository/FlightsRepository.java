@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
- * The interface that is needed to search for flights by aircraft model, number of available seats and ticket price
+ * The interface that is needed to search for flights by all param
  * @author Artem Petrikov
  */
 @Repository

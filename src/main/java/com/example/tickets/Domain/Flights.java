@@ -25,7 +25,7 @@ public class Flights {
     private String price_b;  // Price for business class
 
     /**
-     * Default protected constructor
+     * Default constructor
      */
     public Flights(){
     }

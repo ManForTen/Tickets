@@ -43,8 +43,8 @@ public class AppController {
     /**
      * The method required to display the main page
      * @param model required to add attributes
-     * @param keyword this parameter from the TicketsService class is required to implement the search
-     * @param keyword2 this parameter from the FlightService class is required to implement the search
+     * @param keyword this parameter from the TicketsRepository class is required to implement the search
+     * @param keyword2 this parameter from the FlightRepository class is required to implement the search
      * @return index.html with all parameters
      */
     @RequestMapping("/") // "/" - means that the main page will open
@@ -61,8 +61,8 @@ public class AppController {
     /**
      * The method required to display the user page
      * @param model required to add attributes
-     * @param keyword this parameter from the TicketsService class is required to implement the search
-     * @param keyword2 this parameter from the FlightService class is required to implement the search
+     * @param keyword this parameter from the TicketsRepository class is required to implement the search
+     * @param keyword2 this parameter from the FlightRepository class is required to implement the search
      * @return user/.html with all parameters
      */
     @RequestMapping("/user") // "/user" - means that the user page will open
@@ -126,7 +126,7 @@ public class AppController {
     /**
      * Controller for displaying the admin page
      * @param model required to add attributes
-     * @param keyword2 this parameter from the FlightService class is required to implement the search
+     * @param keyword2 this parameter from the FlightRepository class is required to implement the search
      * @return admin.html with all parameters
      */
     @RequestMapping("/admin")
@@ -187,7 +187,7 @@ public class AppController {
     /**
      * Controller for opening the page with a histogram
      * @param model required to add attributes
-     * @param keyword2 this parameter from the FlightService class is necessary to declare the table through which the histogram will be created
+     * @param keyword2 this parameter from the FlightRepository class is necessary to declare the table through which the histogram will be created
      * @return histogram.html with all parameters
      */
     @RequestMapping("/histogram")
